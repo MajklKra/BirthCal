@@ -1,0 +1,45 @@
+﻿
+    @using BirthCal.DTO
+    @model PresentDTO
+    <div>
+
+        @* <h4>Create a new student</h4> *@
+
+        <h1 style="text-align:center;margin-bottom:100px; margin-top:100px; color:dodgerblue; font-family:sans-serif"><b><u>Vytvoř nový záznam</u></b></h1>
+
+        <div class="container col-8">
+            <form asp-action="Create">
+                <div class="form-group">
+                    <label asp-for="Description"style="margin-top:10px"><b style="color:dodgerblue">Popis</b></label>
+                    <input type="text" asp-for="Description" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" style="margin-top:10px"><b style="color:dodgerblue">Cena</b></label>
+                    <input type="number" asp-for="Price" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="URL" style="margin-top:10px"><b style="color:dodgerblue">URL</b></label>
+                    <input type="url" asp-for="URL" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note" style="margin-top:10px"><b style="color:dodgerblue">Poznámka</b></label>
+                    <input type="text" asp-for="Note" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Purchase" style="margin-top:10px"><b style="color:dodgerblue">Datum</b></label>
+                    <input type="date" asp-for="Purchase" class="form-control" />
+                </div>
+
+                <div class="container" style="padding:50px;">
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <input class="btn btn-outline-success" type="submit" value="Vytvoř" />
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+      
+        </div>
+
+    </div>

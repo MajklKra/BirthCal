@@ -1,0 +1,47 @@
+﻿@using BirthCal.DTO;
+@model EventDTO;
+
+<h1 style="text-align:center;margin-bottom:100px; margin-top:100px; color:dodgerblue; font-family:sans-serif"><b><u>Uprav záznam</u></b></h1>
+
+<div class="container col-8">
+    <form asp-action="Update" method="post">
+        <div class="form-group">
+
+            <label asp-for="Description" style="margin-top:10px"><b style="color:dodgerblue">Popis</b></label>
+            <input type="text" asp-for="Description" placeholder="Description" class="form-control" />
+
+            <label class="control-label" asp-for="PersonId" style="margin-top:10px"><b style="color:dodgerblue">Osoba</b></label>
+            <select class="form-control" asp-for="PersonId" asp-items="ViewBag.People"></select>
+
+            <label class="control-label" asp-for="PresentId" style="margin-top:10px"><b style="color:dodgerblue">Dárek</b></label>
+            <select class="form-control" asp-for="PresentId" asp-items="ViewBag.Presents"></select>
+
+            <label asp-for="NumberOfVisitors" style="margin-top:10px"><b style="color:dodgerblue">Počet hostů</b></label>
+            <input type="number" asp-for="NumberOfVisitors" min="1" max="20" placeholder="NumberOfVisitors" class="form-control" />
+
+            <label asp-for="Location" style="margin-top:10px"><b style="color:dodgerblue">Místo</b></label>
+            <input type="text" asp-for="Location" placeholder="Location" class="form-control" />
+         
+            <label asp-for="DateOfEvent" style="margin-top:10px"><b style="color:dodgerblue">Datum</b></label>
+            <input type="date" asp-for="DateOfEvent" placeholder="DateOfEvent" class="form-control" />
+
+            <label asp-for="Comment" style="margin-top:10px"><b style="color:dodgerblue">Poznámka</b></label>
+            <input type="text" asp-for="Comment" placeholder="Comment" class="form-control" />
+
+        </div>
+
+        @* <div>
+            <input class="btn btn-success" type="submit" value="Update" />
+        </div> *@
+
+        <div class="container" style="padding:50px;">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <input class="btn btn-outline-success" type="submit" value="Uprav" />
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>

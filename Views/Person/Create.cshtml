@@ -1,0 +1,37 @@
+﻿
+    @using BirthCal.DTO
+    @model PersonDTO
+    <div>
+
+    <h1 style="text-align:center;margin-bottom:100px; margin-top:100px; color:dodgerblue; font-family:sans-serif"><b><u>Vytvoř nový záznam</u></b></h1>
+
+    <div class="container col-8">
+        
+        <form asp-action="Create">
+            <div class="form-group" >
+                <label asp-for="FirstName" style="margin-top:10px"><b style="color:dodgerblue">Jméno</b></label>
+                <input type="text" asp-for="FirstName" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" style="margin-top:10px"><b style="color:dodgerblue">Příjmení</b></label>
+                <input type="text" asp-for="LastName" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" style="margin-top:10px"><b style="color:dodgerblue">Datum narození</b></label>
+                <input type="date" asp-for="DateOfBirth" class="form-control"/>
+            </div>
+            @* <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Create"/>
+            </div> *@
+
+            <div class="container" style="padding:50px;">
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <input class="btn btn-outline-success" type="submit" value="Vytvoř" />
+                    </div>
+                </div>
+            </div>
+
+        </form>  
+           
+    </div>

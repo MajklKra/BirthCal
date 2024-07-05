@@ -1,0 +1,40 @@
+﻿@using BirthCal.ViewModels
+@model UserViewModel
+@{
+    ViewData["Title"] = "Vytvoř uživatele";
+}
+@* <h1>Create User</h1> *@
+
+<h1 style="text-align:center;margin-bottom:100px; margin-top:100px; color:dodgerblue; font-family:sans-serif"><b><u>Vytvoř uživatele</u></b></h1>
+
+@* <a asp-action="Index" class="btn btn-secondary">Back</a> *@
+
+<div class="container col-8">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Name" style="margin-top:10px"><b style="color:dodgerblue">Jméno</b></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" style="margin-top:10px"><b style="color:dodgerblue">Email</b></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" style="margin-top:10px"><b style="color:dodgerblue">Heslo</b></label>
+            <input asp-for="Password" class="form-control" />
+        </div>
+        @* <button type="submit" class="btn btn-primary">Create</button> *@
+
+        <div class="container" style="padding:50px;">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-primary" style="width:70px">Vytvoř</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary" style="width:70px">Back</a>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>

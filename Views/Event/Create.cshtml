@@ -1,0 +1,42 @@
+﻿ @using BirthCal.DTO
+ @model EventDTO
+
+<div>
+    <form asp-action="Create">
+        <h4 style="margin-bottom:20px;margin-top:50px; text-align:center;color:dodgerblue; text-shadow:5px 5px 5px white"><b><u>Vytvoř novou událost</u></b></h4>
+        <div class="form-group">
+
+            <label asp-for="Description" style="margin-top:10px;color:dodgerblue"><b>Popis</b></label>
+            <input type="text" asp-for="Description" placeholder="Description" class="form-control"/>
+            
+            <label class="control-label" asp-for="PersonId" style="margin-top:10px;color:dodgerblue"><b>Osoba<b /></label>
+            <select class="form-control"  asp-for="PersonId" asp-items="ViewBag.People"></select>
+
+            <label class="control-label" asp-for="PresentId" style="margin-top:10px;color:dodgerblue" ><b>Dárek<b /></label>
+            <select class="form-control" asp-for="PresentId" asp-items="ViewBag.Presents"></select>
+
+            <label asp-for="Location" style="margin-top:10px;color:dodgerblue"><b>Místo<b /></label>
+            <input type="text" asp-for="Location" placeholder="Location" class="form-control" />
+
+            <label asp-for="NumberOfVisitors" style="margin-top:10px;color:dodgerblue"><b>Počet pozvaných osob:<b /></label>
+            <input type="number" asp-for="NumberOfVisitors" min="1" max="20" placeholder="NumberOfVisitors" class="form-control" />
+
+            <label asp-for="DateOfEvent" style="margin-top:10px;color:dodgerblue"><b>Datum akce:<b /></label>
+            <input type="date" asp-for="DateOfEvent" placeholder="DateOfEvent" class="form-control" />
+
+            <label asp-for="Comment" style="margin-top:10px;color:dodgerblue"><b>Poznámky:<b /></label>
+            <input type="text" asp-for="Comment" placeholder="Comment" class="form-control" style="margin-bottom:10px" />
+        
+        </div>
+
+        <div class="container" style="padding:50px;">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <input class="btn btn-outline-success" type="submit" value="Create" />
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

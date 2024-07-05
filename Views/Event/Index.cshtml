@@ -1,0 +1,89 @@
+﻿
+    @using BirthCal.ViewModels
+
+    @model IEnumerable<EventsViewModel>
+
+    @{
+        ViewData["Title"] = "People";
+    }
+
+<h1 style="text-align:center; margin:100px;color:slategray;text-shadow 1px 1px 1px slategray"><u><b>Seznam všech událostí</b></u></h1>
+
+   @*  @foreach (var e in Model)
+    {
+        <div class="border border-1 border-dark">
+            <p>@e.PersonName </p>
+            <p>
+                @e.PresentName: @e.Comment <br>
+                @e.DateOfEvent.ToString()
+            </p>
+            <a class="btn btn-warning" asp-controller="Event" asp-action="Update"
+               asp-route-id="@e.Id">Edit</a>
+            <form method="post">
+                <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Event"
+                        asp-route-id="@e.Id">
+                    Delete
+                </button>
+            </form>
+        </div>
+    } *@
+
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Popis</th>
+                <th>Jméno a příjmení</th>
+                <th>Dárek</th>
+                <th>Místo</th>
+                <th>Počet hostů</th>
+                <th>Datum události</th>
+                <th>Poznámka</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Description</td>
+                    <td>@item.PersonName</td>
+                    <td>@item.PresentName</td>
+                    <td>@item.Location</td>
+                    <td>@item.NumberOfVisitors</td>
+                    <td>@item.DateOfEvent</td>
+                    <td>@item.Comment</td>
+                    <td>
+                    <a class="btn btn-outline-warning" asp-controller="Event" asp-action="Update" asp-route-id="@item.Id" style="width: 70px">Uprav</a>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <button type="submit" class="btn btn-outline-danger" asp-action="Delete" asp-controller="Event"
+                                asp-route-id="@item.Id" style="width: 70px">
+                                Vymaž
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                
+            }
+        </tbody>
+    </table>
+
+    <div class="container" style="padding:50px;">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a class="btn btn-outline-info" asp-controller="Event" asp-action="Create">
+                    Vytvoř událost
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+

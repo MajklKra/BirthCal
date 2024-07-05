@@ -1,0 +1,303 @@
+﻿@using BirthCal.DTO;
+
+@model IEnumerable<PersonDTO>
+
+@{
+    ViewData["Title"] = "Narozeniny";
+}
+
+
+<p><H1 style="text-align:center; margin: 50px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:white"><u>Prehled narozenin podle mesicu</u></H1>
+<p />
+<p><H3>Mesice</H3></p>
+<p><i>(zaznam ve forme Id, jmeno, prijmeni, datum narozeni)</i></p>
+  
+@{
+    ViewData["Title"] = "Accordion Demo";
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.accordion-header').click(function () {
+                var accordionItem = $(this).closest('.accordion-item');
+                var accordionContent = accordionItem.find('.accordion-content');
+
+                // Toggle active class on header
+                $(this).toggleClass('active');
+
+                // Toggle visibility of content
+                if (accordionContent.is(':visible')) {
+                    accordionContent.slideUp();
+                } else {
+                    $('.accordion-content').slideUp(); // Close all other panels
+                    accordionContent.slideDown();
+                }
+            });
+        });
+    </script>
+}
+
+@* @for (int i = 1; i < 13; i++)
+{
+    <div class="accordion-item" style="border-width: 0px">
+
+
+    @if (i == 1)
+    {
+        
+        <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke;
+        border-radius: 15px">
+                    <h5 style="padding: 10px">
+                        Leden <i class="fa fa-chevron-down pull-right"></i><h5 />                
+        </div>
+
+    }
+
+    @if (i == 2)
+    {
+
+        <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Unor<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+
+    }
+
+    @if (i == 3)
+    {
+
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Brezen<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+
+    }
+
+    @if (i == 4)
+    {
+
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Duben<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+
+    }
+
+    @if (i == 5)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Kveten<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 6)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Cerven<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 7)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Cervenec<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 8)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Srpen<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 9)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Zari<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 10)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Rijen<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 11)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Listopad<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    }
+
+    @if (i == 12)
+    {
+            <div class="accordion-header" onclick="toggleaccordion(this)" style=" border:1px solid black; margin-bottom:10px;background-color: whitesmoke; border-radius: 15px">
+                <h5 style="padding: 10px">Prosinec<i class="fa fa-chevron-down pull-right"></i><h5 />
+            </div>
+    } 
+
+    @for (int p = 0; p < Model.Count(); p++)
+    {
+        @if ((i == 1) && (@Model.ElementAt(p).DateOfBirth.Month == 1))
+        {
+                   
+            <div class="accordion-content" style="border-width: 0px; padding = 20px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 2) && (@Model.ElementAt(p).DateOfBirth.Month == 2))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+            
+        @if ((i == 3) && (@Model.ElementAt(p).DateOfBirth.Month == 3))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 4) && (@Model.ElementAt(p).DateOfBirth.Month == 4))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 5) && (@Model.ElementAt(p).DateOfBirth.Month == 5))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 6) && (@Model.ElementAt(p).DateOfBirth.Month == 6))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 7) && (@Model.ElementAt(p).DateOfBirth.Month == 7))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 8) && (@Model.ElementAt(p).DateOfBirth.Month == 8))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 9) && (@Model.ElementAt(p).DateOfBirth.Month == 9))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 10) && (@Model.ElementAt(p).DateOfBirth.Month == 10))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 11) && (@Model.ElementAt(p).DateOfBirth.Month == 11))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+        @if ((i == 12) && (@Model.ElementAt(p).DateOfBirth.Month == 12))
+        {
+
+            <div class="accordion-content" style="border-width: 0px">
+                <p style="padding-left:30px">
+                    @Model.ElementAt(p).Id
+                    @Model.ElementAt(p).FirstName
+                    @Model.ElementAt(p).LastName
+                    @Model.ElementAt(p).DateOfBirth
+                </p>
+            </div>
+        }
+
+    }
+
+    </div>
+}
+
+</div> *@

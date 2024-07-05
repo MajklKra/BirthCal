@@ -1,0 +1,35 @@
+﻿@model string
+
+
+@{
+    ViewData["Title"] = "Vytvoř oprávnění";
+}
+
+@* <h1>Create a Role</h1> *@
+
+<h1 style="text-align:center;margin-bottom:100px; margin-top:100px; color:dodgerblue; font-family:sans-serif"><b><u>Vytvoř oprávnění</u></b></h1>
+
+@* <a asp-action="Index" class="btn btn-secondary">Back</a> *@
+
+<div class="container col-8">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label for="name" style="margin-top:10px"><b style="color:dodgerblue">Jméno</b></label>
+            <input name="name" class="form-control" />
+        </div>
+        @* <button type="submit" class="btn btn-primary">Create</button> *@
+
+
+        <div class="container" style="padding:50px;">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-primary" style="width:70">Vytvoř</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary" style="width:70">Zpátky</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+ </div>
+    

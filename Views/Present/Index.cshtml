@@ -1,0 +1,80 @@
+﻿
+    
+    @using BirthCal.DTO;
+  
+    @model IEnumerable<PresentDTO>
+
+    @{
+        ViewData["Title"] = "Dárky";
+    }
+
+    <html>
+    <head>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            }
+        </style>
+
+    </head>
+
+    @{
+        int sum = 0;
+    }
+
+    @{
+        DateTime currentDate = DateTime.Now;
+    }
+
+    <H1><p style="text-align:center; padding: 50px" ><u><b> Přehled zakoupených dárků </b></></u></p></H1>
+   
+    <table id="myTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Popis</th>
+                <th>Cena</th>
+                <th>URL</th>
+                <th>Poznámka</th>
+                <th>Datum</th>
+                <th>Uprav</th>
+                <th>Vymaž</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var present in Model)
+            {
+                <tr>
+                    <td>@present.Id</td>
+                    <td>@present.Description</td>
+                    <td>@present.Price</td>
+                    <td>@present.URL</td>
+                    <td>@present.Note</td>
+                    <td>@present.Purchase</td>
+                    <td><a class="btn btn-outline-warning" asp-action="Update" asp-route-id="@present.Id" style="width: 70px">Uprav</a></td>
+                    <td>
+                        <form method="post">
+                        <button type="submit" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@present.Id" style="width: 70px">Vymaž</button>
+                        </form>
+                    </td>
+                </tr>
+
+                sum = sum + present.Price;
+            }
+        </tbody>
+    </table>
+
+    <div class="container" style="padding:50px;">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a class="btn btn-outline-info" asp-action="Create" style="width: 70px">Vytvoř</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding:50px; border:solid; border-radius:15px;border-width:1px;background-color:whitesmoke ">
+    <p><b>Celková utracená částka: &nbsp @sum &nbsp [Kč,-]</b></p>
+        <p>Aktuální datum: @DateTime.Now.ToString("dd.MM.yyyy")</p>
+    </div>
+

@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<p class="display-4" style="text-align:right; font-size:15px; color:blue"><i>Hezký a úspěšný den</i> <b>@Model</b></p>
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <Div style="text-align:right; margin-bottom:50px">
+        <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Odhlášení</a>
+    </Div>
+}
+
+<h1 style="text-align:center;; margin-bottom:50px; color: white;text-shadow: 2px 2px 4px #000000;"> Organizér narozenin</h1>
+
+@* <h1 class="display-4">Welcome @Model</h1>
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+} *@
+
+
+@* <div style="position:absolute; left:42%; top:55%;-ms-transform:translateY(-50%);transform: translateY(-50%)">
+    <img src="/images/birthday-cake-birthday.svg" alt="Description of the image" width="300" height="300"/>
+<div/> *@
+    
+<div class="d-flex justify-content-center">
+    <img src="/images/birthday-cake-birthday.svg" alt="Description of the image" class="img-fluid" style="width:400px; height:auto"/>
+<div/> 
